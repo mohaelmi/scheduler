@@ -61,7 +61,7 @@ export default function Appointment(props) {
           onEdit={() => transition(EDIT)}
         />
       )}
-      {mode === CREATE || mode === EDIT && (
+      {mode === CREATE && (
         <Form interviewers={props.interviewers} onSave={save} onCancel={back} />
       )}
       {mode === SAVING && <Status message={"SAVING"} />}
@@ -72,6 +72,9 @@ export default function Appointment(props) {
           onCancel={back}
           onConfirm={destroy}
         />
+      )}
+       {mode === EDIT && (
+        <Form interviewers={props.interviewers} onSave={save} onCancel={back} />
       )}
       {mode === ERROR_SAVE && (
         <Error message="Could not book appointment." onClose={back} />
